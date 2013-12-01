@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HBase Monitor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="js/jquery/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="js/jquery/themes/icon.css">
+	
+	<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.easyui.min.js"></script>
+	
+	<script type="text/javascript" src="js/highchart/highcharts.js"></script>
+	<script type="text/javascript" src="js/highchart/modules/exporting.js"></script>
+	
+	<script type="text/javascript" src="js/hbaseMonitor/navigation.js"></script>
+	<script type="text/javascript" src="js/hbaseMonitor/pagination.js"></script>
+	
+</head>
+
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false,title:'HBase Monitor'" style="height:100px;padding:10px">
+		<h2> HBase Monitor </h2>
+	</div>
+
+	<div data-options="region:'west',split:true,title:'导航菜单'"  style="width:250px;padding:10px;">
+		<div id="navigation" style="width:230px;height:auto;">
+			<-- 导航菜单 -->
+		</div>
+	</div>
+	
+	<div data-options="region:'center',border:false" style="padding:2px;">
+		<div id="content" class="easyui-tabs" border="false" fit="true"></div>
+	</div>
+
+</body>
+</html>
