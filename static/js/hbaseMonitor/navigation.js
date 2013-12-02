@@ -15,9 +15,8 @@ var navigation_menu = {'menus':[
 	},
 	{'menu_id':'main3','menu_title':'HBase Master Info',
 		'menu_children':[
-			{'menu_id':'main3_minor1','menu_title':'Cluster Info','url':'order.html'},
-			{'menu_id':'main3_minor2','menu_title':'Master  Info','url':'order.html'},
-			{'menu_id':'main3_minor3','menu_title':'RegionServer Load','url':'order.html'}
+			{'menu_id':'main3_minor1','menu_title':'Cluster & Master  Info','url':'http://127.0.0.1:8000/show_master_info/#'},
+			{'menu_id':'main3_minor2','menu_title':'RegionServer Load','url':'order.html'}
 		]
 	},
 	{'menu_id':'main4','menu_title':'HBase RegionServer Info',

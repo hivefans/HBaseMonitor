@@ -11,6 +11,9 @@ def tableTps(request):
 def tableStorageInfo(request):
     return render_to_response('table/table_storage.html')
 
+def showMasterInfo(request):
+    return render_to_response('master/master.html')
+
 def getTableTps(request):
     context = {'code':200, 'msg':{'total':0, 'rows':[
                    {'tableName':123, 'writeCount':1234, 'readCount':'mt', 'totalCount':123,'writeTPS':123,'readTPS':123}, 

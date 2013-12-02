@@ -1,6 +1,6 @@
 from HBaseMonitor import settings
 from HBaseMonitor.view import index, tableTps, tableStorageInfo, getTableTps, \
-    getTableStorageInfo
+    getTableStorageInfo, showMasterInfo
 from django.conf.urls import patterns, url
 
 # Uncomment the next two lines to enable the admin:
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     ('^index/$',index),
     ('^show_table_tps/$',tableTps),
     ('^show_table_storage_info/$',tableStorageInfo),
+    ('^show_master_info/$',showMasterInfo),
     
     ('^get_table_tps/$',getTableTps),
     ('^get_table_storage_info/$',getTableStorageInfo),
