@@ -16,7 +16,7 @@ var navigation_menu = {'menus':[
 	{'menu_id':'main3','menu_title':'HBase Master Info',
 		'menu_children':[
 			{'menu_id':'main3_minor1','menu_title':'Cluster & Master  Info','url':'http://127.0.0.1:8000/show_master_info/#'},
-			{'menu_id':'main3_minor2','menu_title':'RegionServer Load','url':'order.html'}
+			{'menu_id':'main3_minor2','menu_title':'RegionServer Load','url':'http://127.0.0.1:8000/show_regionserver_load/#'}
 		]
 	},
 	{'menu_id':'main4','menu_title':'HBase RegionServer Info',
@@ -24,9 +24,7 @@ var navigation_menu = {'menus':[
 			{'menu_id':'main4_minor1','menu_title':'Replication Statistics','url':'order.html'},
 			{'menu_id':'main4_minor2','menu_title':'Static Index & Bloom','url':'order.html'},
 			{'menu_id':'main4_minor3','menu_title':'Compact & split','url':'order.html'},
-			{'menu_id':'main4_minor4','menu_title':'Requests','url':'order.html'},
-			{'menu_id':'main4_minor5','menu_title':'Memstore','url':'order.html'},
-			{'menu_id':'main4_minor6','menu_title':'Flush','url':'order.html'}
+			{'menu_id':'main4_minor4','menu_title':'Memstore& Flush','url':'order.html'},
 		]
 	},
 	{'menu_id':'main5','menu_title':'HBase RPC Info',
