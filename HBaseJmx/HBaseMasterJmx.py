@@ -175,18 +175,22 @@ def getClusterTPS():
         return []
 
 def getHBaseJmx(ip, port):
-    try:
-        conn = httplib.HTTPConnection(ip, port, timeout=30)
-        conn.request('GET', '/jmx')
-        response = conn.getresponse()
-        status = response.status
-    except Exception,e:
-        return ''
-    if (200 == status):
-        jmxData = response.read()
-        return jmxData
-    else:
-        return ''
+#    try:
+    fileHandle = open('G:/workspace(c java)/java-workspace2/HBaseMonitor/HBaseJmx/10.jmx')
+    jmxJsData = fileHandle.read()
+    fileHandle.close()
+    return jmxJsData
+#        conn = httplib.HTTPConnection(ip, port, timeout=30)
+#        conn.request('GET', '/jmx')
+#        response = conn.getresponse()
+#        status = response.status
+#    except Exception,e:
+#        return ''
+#    if (200 == status):
+#        jmxData = response.read()
+#        return jmxData
+#    else:
+#        return ''
 
 def main():
     #fileHandle = open('10.jmx')
@@ -201,6 +205,4 @@ def main():
         hbaseMasterJmx.print_HBaseJmx()
 
 if __name__ == '__main__':
-    res = to_view()
-    for item in res:
-        print item
+    pass

@@ -19,6 +19,9 @@ def showMasterInfo(request):
 def showRegionServerLoad(request):
     return render_to_response('master/regionserver_load.html')
 
+def showZkInfo(request):
+    return render_to_response('zk/zookeeper.html')
+
 def getTableTps(request):
     tableTps = getTabelTps_List()
     context = {'code':200, 'msg':{'total':3, 'rows':tableTps}}
@@ -124,4 +127,31 @@ def getRegionList(request):
                 }]   
                 }
                 ]}
+    return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
+
+def get_zk_info(request):
+    context = {'code':200, 'msg':{'total':3, 'rows':[
+                   {'zkIp':'10.1.77.88', 'recieved':100, 'send':100, 
+                    'min_Latency':100, 'avg_Latency':100, 'max_Latency':100, 'connections':100,
+                    'zxID':100, 'mode':100, 'nodeCount':100},
+                   {'zkIp':'10.1.77.88', 'recieved':100, 'send':100, 
+                    'min_Latency':100, 'avg_Latency':100, 'max_Latency':100, 'connections':100,
+                    'zxID':100, 'mode':100, 'nodeCount':100},
+                   {'zkIp':'10.1.77.88', 'recieved':100, 'send':100, 
+                    'min_Latency':100, 'avg_Latency':100, 'max_Latency':100, 'connections':100,
+                    'zxID':100, 'mode':100, 'nodeCount':100},
+                   
+              ]}}
+    return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
+
+@csrf_exempt
+def getZkAttr(request):
+    context = {'total':5, 'rows':[   
+                     {'name':'Active MasterServer', 'value':'test85.hadoop,60000,1386848313615','group':'Zookeeper Info'},
+                     {'name':'Backup MasterServer', 'value':'test87.hadoop,60000,1386848375241','group':'Zookeeper Info',},
+                     {'name':'ROOT   Region  Addr', 'value':'test91.hadoop,60020,1386840637108','group':'Zookeeper Info',},
+                     {'name':'Slave Peer  ', 'value':'dev81.hadoop,dev82.hadoop,dev83.hadoop:2181:/hbase','group':'Replication Info'},
+                     {'name':'Peer  ID    ', 'value':'2','group':'Replication Info'},
+                     {'name':'Peer  State', 'value':'Enable','group':'Replication Info'},
+             ]} 
     return HttpResponse(simplejson.dumps(context, ensure_ascii=False))

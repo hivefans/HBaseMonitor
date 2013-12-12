@@ -27,6 +27,12 @@ var navigation_menu = {'menus':[
 			{'menu_id':'main4_minor4','menu_title':'Memstore& Flush','url':'order.html'},
 		]
 	},
+	{'menu_id':'main8','menu_title':'ZooKeeper Info',
+		'menu_children':[
+			{'menu_id':'main8_minor1','menu_title':'Zookeeper','url':'http://127.0.0.1:8000/show_zk_info/#'},
+			{'menu_id':'main8_minor2','menu_title':'Replication','url':'order.html'},
+		]
+	},
 	{'menu_id':'main5','menu_title':'HBase RPC Info',
 		'menu_children':[
 			{'menu_id':'main4_minor1','menu_title':'订单管理','url':'order.html'},

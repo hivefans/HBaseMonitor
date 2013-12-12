@@ -17,7 +17,7 @@ function init() {
 		columns : [ [ {
 			field : 'tableName',
 			title : 'TableName',
-			width : 100,
+			width : 250,
 			align : 'center'
 		}, {
 			field : 'storefiles',
