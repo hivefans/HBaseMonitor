@@ -15,17 +15,17 @@ function init() {
 		rownumbers : false,
 		fitColumns : true,
 		columns : [ [ {
-			field : 'TableName',
+			field : 'tableName',
 			title : 'TableName',
 			width : 100,
 			align : 'center'
 		}, {
-			field : 'StoreFiles',
+			field : 'storefiles',
 			title : 'StoreFiles',
 			width : 100,
 			align : 'center'
 		}, {
-			field : 'Stores',
+			field : 'stores',
 			title : 'Stores',
 			width : 100,
 			align : 'center'
@@ -47,6 +47,11 @@ function init() {
 		}, {
 			field : 'totalStaticBloomSizeKB',
 			title : 'totalStaticBloomSizeKB',
+			width : 100,
+			align : 'center'
+		},{
+			field : 'totalStaticIndexSizeKB',
+			title : 'totalStaticIndexSizeKB',
 			width : 100,
 			align : 'center'
 		}, {

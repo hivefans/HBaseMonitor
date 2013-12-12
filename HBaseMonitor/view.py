@@ -1,7 +1,8 @@
+from HBaseJmx.HBaseMasterJmx import getTabelTps_List,getTableStorageInfo_List,getClusterInfo,getClusterTPS
 from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
 from django.utils import simplejson
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     return render_to_response('index.html')
@@ -19,43 +20,47 @@ def showRegionServerLoad(request):
     return render_to_response('master/regionserver_load.html')
 
 def getTableTps(request):
-    context = {'code':200, 'msg':{'total':3, 'rows':[
-                   {'tableName':123, 'writeCount':1234, 'readCount':'mt', 'totalCount':123, 'writeTPS':123, 'readTPS':123},
-                   {'tableName':123, 'writeCount':1234, 'readCount':'mt', 'totalCount':123, 'writeTPS':123, 'readTPS':123},
-                   {'tableName':123, 'writeCount':1234, 'readCount':'mt', 'totalCount':123, 'writeTPS':123, 'readTPS':123}
-              ]}}
+    tableTps = getTabelTps_List()
+    context = {'code':200, 'msg':{'total':3, 'rows':tableTps}}
     return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
 
 def getTableStorageInfo(request):
-    context = {'code':200, 'msg':{'total':2, 'rows':[
-                   {'TableName':123, 'StoreFiles':1234, 'Stores':'mt', 'rootIndexSizeKB':123, 'storefileIndexSizeMB':123,
-                    'storefileSizeMB':123, 'totalStaticBloomSizeKB':123, 'currentCompactedKVs':123, 'totalCompactingKVs':123,
-                    'memStoreSizeMB':123},
-                   {'TableName':123, 'StoreFiles':1234, 'Stores':'mt', 'rootIndexSizeKB':123, 'storefileIndexSizeMB':123,
-                    'storefileSizeMB':123, 'totalStaticBloomSizeKB':123, 'currentCompactedKVs':123, 'totalCompactingKVs':123,
-                    'memStoreSizeMB':123}
-                   ]}} 
+    # context = {'code':200, 'msg':{'total':2, 'rows':[
+    #                {'TableName':123, 'StoreFiles':1234, 'Stores':'mt', 'rootIndexSizeKB':123, 'storefileIndexSizeMB':123,
+    #                 'storefileSizeMB':123, 'totalStaticBloomSizeKB':123,'totalStaticIndexSizeKB':123, 'currentCompactedKVs':123, 'totalCompactingKVs':123,
+    #                 'memStoreSizeMB':123},
+    #                {'TableName':123, 'StoreFiles':1234, 'Stores':'mt', 'rootIndexSizeKB':123, 'storefileIndexSizeMB':123,
+    #                 'storefileSizeMB':123, 'totalStaticBloomSizeKB':123,'totalStaticIndexSizeKB':123, 'currentCompactedKVs':123, 'totalCompactingKVs':123,
+    #                 'memStoreSizeMB':123}
+    #                ]}} 
+    tableStorageInfo = getTableStorageInfo_List()
+    context = {'code':200, 'msg':{'total':3, 'rows':tableStorageInfo}}
     return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
 
 @csrf_exempt
 def getClusterAttr(request):
-    context = {'total':5, 'rows':[   
-                    {'name':'ServerName', 'value':'Bill Smith'},
-                    {'name':'MasterStartTime', 'value':'2013-12-07 12:00:00'},
-                    {'name':'MasterActiveTime', 'value':'2013-12-07 12:00:00'},
-                    {'name':'ZookeeperQuorum', 'value':'test88.hadoop,test89.hadoop,test90.hadoop'},
-                    {'name':'ClusterId', 'value':'dwe344eer-fefegr55g4g-5gr55grgr59'}
-            ]}  
+    # context = {'total':5, 'rows':[   
+    #                 {'name':'ServerName', 'value':'Bill Smith'},
+    #                 {'name':'MasterStartTime', 'value':'2013-12-07 12:00:00'},
+    #                 {'name':'MasterActiveTime', 'value':'2013-12-07 12:00:00'},
+    #                 {'name':'ZookeeperQuorum', 'value':'test88.hadoop,test89.hadoop,test90.hadoop'},
+    #                 {'name':'ClusterId', 'value':'dwe344eer-fefegr55g4g-5gr55grgr59'}
+    #         ]}
+    clusterInfo = getClusterInfo()
+    print clusterInfo
+    context = {'total':len(clusterInfo), 'rows': clusterInfo}  
     return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
 
 def getClusterTps(request):
-    context = {'code':200, 'msg':{'total':4, 'rows':[
-                   {'regionServer':'test88.hadoop', 'currentTps':100},
-                   {'regionServer':'test89.hadoop', 'currentTps':100},
-                   {'regionServer':'test90.hadoop', 'currentTps':100},
-                   {'regionServer':'test91.hadoop', 'currentTps':100},
-                   {'cluster':'Cluster', 'currentTps':400}
-              ]}}
+    # context = {'code':200, 'msg':{'total':4, 'rows':[
+    #                {'regionServer':'test88.hadoop', 'currentTps':100},
+    #                {'regionServer':'test89.hadoop', 'currentTps':100},
+    #                {'regionServer':'test90.hadoop', 'currentTps':100},
+    #                {'regionServer':'test91.hadoop', 'currentTps':100},
+    #                {'regionServer':'Cluster', 'currentTps':400}
+    #           ]}}
+    clusterTps = getClusterTPS()
+    context = {'code':200, 'msg':{'total':len(clusterTps), 'rows':clusterTps}}
     return HttpResponse(simplejson.dumps(context, ensure_ascii=False))
 
 def getRegionServerInfo(request):
