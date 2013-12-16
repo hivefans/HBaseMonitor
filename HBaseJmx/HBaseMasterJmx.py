@@ -112,7 +112,7 @@ class HBaseMasterJmx(object):
             self.ClusterTps.append({'regionServer':rs.regionServerName,'currentTps':rs.numberOfRequests})
 
 def getTabelTps_List():
-    jmxJsData = getHBaseJmx('10.1.77.85','60010')
+    jmxJsData = getHBaseJmx('192.168.7.80','60010')
     if ''!=jmxJsData:
         jmxPyData = json.loads(jmxJsData)
         hbaseMaster = HBaseMasterJmx(jmxPyData['beans'])
@@ -133,7 +133,7 @@ def getTabelTps_List():
         return []
 
 def getTableStorageInfo_List():
-    jmxJsData = getHBaseJmx('10.1.77.85','60010')
+    jmxJsData = getHBaseJmx('192.168.7.80','60010')
     if ''!=jmxJsData:
         jmxPyData = json.loads(jmxJsData)
         hbaseMaster = HBaseMasterJmx(jmxPyData['beans'])
@@ -153,7 +153,7 @@ def getTableStorageInfo_List():
         return []
 
 def getClusterInfo():
-    jmxJsData = getHBaseJmx('10.1.77.85','60010')
+    jmxJsData = getHBaseJmx('192.168.7.80','60010')
     if ''!=jmxJsData:
         jmxPyData = json.loads(jmxJsData)
         hbaseMaster = HBaseMasterJmx(jmxPyData['beans'])
@@ -164,7 +164,7 @@ def getClusterInfo():
         return []
 
 def getClusterTPS():
-    jmxJsData = getHBaseJmx('10.1.77.85','60010')
+    jmxJsData = getHBaseJmx('192.168.7.80','60010')
     if ''!=jmxJsData:
         jmxPyData = json.loads(jmxJsData)
         hbaseMaster = HBaseMasterJmx(jmxPyData['beans'])
@@ -188,12 +188,30 @@ def getHBaseJmx(ip, port):
     else:
         return ''
 
+#    try:
+    # fileHandle = open('G:/workspace(c java)/java-workspace2/HBaseMonitor/HBaseJmx/10.jmx')
+    # jmxJsData = fileHandle.read()
+    # fileHandle.close()
+    # return jmxJsData
+#        conn = httplib.HTTPConnection(ip, port, timeout=30)
+#        conn.request('GET', '/jmx')
+#        response = conn.getresponse()
+#        status = response.status
+#    except Exception,e:
+#        return ''
+#    if (200 == status):
+#        jmxData = response.read()
+#        return jmxData
+#    else:
+#        return ''
+
+
 def main():
     #fileHandle = open('10.jmx')
     #jmxJsData = fileHandle.read()
     #fileHandle.close()
 
-    jmxJsData = getHBaseJmx('10.1.77.85','60010')
+    jmxJsData = getHBaseJmx('192.168.7.80','60010')
     if ''!=jmxJsData:
         jmxPyData = json.loads(jmxJsData)
         hbaseMasterJmx = HBaseMasterJmx(jmxPyData['beans'])
@@ -201,6 +219,5 @@ def main():
         hbaseMasterJmx.print_HBaseJmx()
 
 if __name__ == '__main__':
-    res = to_view()
-    for item in res:
-        print item
+    pass
+

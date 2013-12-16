@@ -1,7 +1,8 @@
 from HBaseMonitor import settings
 from HBaseMonitor.view import index, tableTps, tableStorageInfo, getTableTps, \
     getTableStorageInfo, showMasterInfo, showRegionServerLoad, getClusterAttr, \
-    getClusterTps, getRegionServerInfo, getRegionInfo, getRegionList
+    getClusterTps, getRegionServerInfo, getRegionInfo, getRegionList, showZkInfo, \
+    get_zk_info, getZkAttr
 from django.conf.urls import patterns, url
 
 # Uncomment the next two lines to enable the admin:
@@ -31,6 +32,7 @@ urlpatterns = patterns('',
     ('^show_table_storage_info/$',tableStorageInfo),
     ('^show_master_info/$',showMasterInfo),
     ('^show_regionserver_load/$',showRegionServerLoad),
+    ('^show_zk_info/$',showZkInfo),
     
     ('^get_table_tps/$',getTableTps),
     ('^get_table_storage_info/$',getTableStorageInfo),
@@ -39,4 +41,6 @@ urlpatterns = patterns('',
     ('^get_regionserver_info/$',getRegionServerInfo),
     ('^get_region_info/$',getRegionInfo),
     ('^get_region_list/$',getRegionList),
+    ('^get_zk_info/$',get_zk_info),
+    ('^get_zk_attr/$',getZkAttr),
 )
