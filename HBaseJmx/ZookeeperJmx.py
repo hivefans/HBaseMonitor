@@ -41,11 +41,11 @@ class ZookeeperJmx(object):
                     self.RsList.append(contentList[index])
                     index += 1
             if '/hbase/replication/state:' in contentList[index]:
-                self.peerState = contentList[index].strip().split(' ')[1]
+                self.repState = contentList[index].strip().split(' ')[1]
             if '/hbase/replication/peers' in contentList[index] and '2181' in contentList[index]:
                 self.peerSlave = contentList[index].strip().split(' ')[1]
             if '/hbase/replication/peers' in contentList[index] and 'peer-state' in contentList[index]:
-                self.peerState += '/'+contentList[index].strip().split(' ')[1]
+                self.peerState = contentList[index].strip().split(' ')[1]
                 self.peerID = contentList[index].strip().split(' ')[0].split('/')[4]
             if 'Quorum Server Statistics:' in contentList[index]:
                 index += 1
@@ -111,6 +111,7 @@ def readyZKAttrList():
         {'name':'ROOT   Region  Addr', 'value':zk.rootRegionser,'group':'Zookeeper Info',},
         {'name':'Slave Peer  ', 'value':zk.peerSlave,'group':'Replication Info'},
         {'name':'Peer  ID    ', 'value':zk.peerID,'group':'Replication Info'},
+        {'name':'Replication  State', 'value':zk.repState,'group':'Replication Info'},
         {'name':'Peer  State', 'value':zk.peerState,'group':'Replication Info'},
     ]
     return zkAttrList
